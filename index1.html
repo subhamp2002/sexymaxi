@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Help & Support - Chubby Buns BTown Time Management System</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#4CAF50',secondary:'#f44336'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.search-input:focus {
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+}
+.faq-item {
+  transition: all 0.3s ease;
+}
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+.faq-item.active .faq-answer {
+  max-height: 500px;
+}
+.faq-item.active .faq-toggle i {
+  transform: rotate(180deg);
+}
+.custom-checkbox {
+  position: relative;
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #d1d5db;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+.custom-checkbox.checked {
+  background-color: #4CAF50;
+  border-color: #4CAF50;
+}
+.custom-checkbox.checked::after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 2px;
+  width: 6px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.custom-radio {
+  position: relative;
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #d1d5db;
+  border-radius: 50%;
+  transition: all 0.2s;
+}
+.custom-radio.checked {
+  border-color: #4CAF50;
+}
+.custom-radio.checked::after {
+  content: '';
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #4CAF50;
+}
+.video-thumbnail {
+  position: relative;
+}
+.video-thumbnail::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+.video-thumbnail::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  border-left: 25px solid white;
+}
+</style>
+</head>
+<body class="bg-gray-50">
+<header class="bg-white shadow-sm py-4 px-6">
+<div class="container mx-auto flex justify-between items-center">
+<div class="flex items-center">
+<div class="text-3xl font-['Pacifico'] text-primary mr-3">logo</div>
+<h1 class="text-xl font-semibold text-gray-800">Chubby Buns BTown Time Management System</h1>
+</div>
+<div class="text-right">
+<p class="text-gray-600" id="current-date">Tuesday, April 1, 2025</p>
+<p class="text-xl font-bold text-gray-800" id="current-time">12:00:00 PM</p>
+</div>
+</div>
+</header>
+
+<main class="flex-grow container mx-auto px-6 py-8">
+<div class="flex items-center mb-6">
+<a href="https://readdy.ai/home/5774d525-e570-4acd-9b2d-8b8144fdbd94/c022cc12-180f-482b-90e5-4ac31e43afa6" data-readdy="true" class="flex items-center text-gray-600 hover:text-primary transition-colors">
+<div class="w-5 h-5 flex items-center justify-center mr-1">
+<i class="ri-arrow-left-line"></i>
+</div>
+<span>Back to Dashboard</span>
+</a>
+<div class="mx-2 text-gray-400">/</div>
+<span class="text-gray-800">Help & Support</span>
+</div>
+
+<div class="bg-white rounded shadow-sm p-6 mb-8">
+<h2 class="text-2xl font-bold text-gray-800 mb-6">Help & Support Center</h2>
+<div class="relative mb-8">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<div class="w-5 h-5 flex items-center justify-center text-gray-400">
+<i class="ri-search-line"></i>
+</div>
+</div>
+<input type="text" class="search-input block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-button focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Search knowledge base...">
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+<a href="#faqs" class="block bg-white border border-gray-200 rounded p-6 hover:shadow-md transition-shadow">
+<div class="w-12 h-12 flex items-center justify-center bg-primary/10 text-primary rounded-full mb-4">
+<i class="ri-question-answer-line ri-xl"></i>
+</div>
+<h3 class="text-lg font-semibold text-gray-800 mb-2">Frequently Asked Questions</h3>
+<p class="text-gray-600">Find answers to common questions about the time management system.</p>
+</a>
+
+<a href="#troubleshooting" class="block bg-white border border-gray-200 rounded p-6 hover:shadow-md transition-shadow">
+<div class="w-12 h-12 flex items-center justify-center bg-secondary/10 text-secondary rounded-full mb-4">
+<i class="ri-error-warning-line ri-xl"></i>
+</div>
+<h3 class="text-lg font-semibold text-gray-800 mb-2">Troubleshooting Guide</h3>
+<p class="text-gray-600">Solutions for common issues with location tracking and system usage.</p>
+</a>
+
+<a href="#tutorials" class="block bg-white border border-gray-200 rounded p-6 hover:shadow-md transition-shadow">
+<div class="w-12 h-12 flex items-center justify-center bg-blue-500/10 text-blue-500 rounded-full mb-4">
+<i class="ri-video-line ri-xl"></i>
+</div>
+<h3 class="text-lg font-semibold text-gray-800 mb-2">Video Tutorials</h3>
+<p class="text-gray-600">Step-by-step video guides for using all system features.</p>
+</a>
+
+<a href="#contact" class="block bg-white border border-gray-200 rounded p-6 hover:shadow-md transition-shadow">
+<div class="w-12 h-12 flex items-center justify-center bg-amber-500/10 text-amber-500 rounded-full mb-4">
+<i class="ri-customer-service-2-line ri-xl"></i>
+</div>
+<h3 class="text-lg font-semibold text-gray-800 mb-2">Contact Support</h3>
+<p class="text-gray-600">Get in touch with our technical support team for assistance.</p>
+</a>
+</div>
+
+<section id="faqs" class="mb-12">
+<h2 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
+<div class="w-6 h-6 flex items-center justify-center mr-2 text-primary">
+<i class="ri-question-answer-line"></i>
+</div>
+Frequently Asked Questions
+</h2>
+
+<div class="space-y-4" id="faq-container">
+</div>
+</section>
+
+<section id="troubleshooting" class="mb-12">
+<h2 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
+<div class="w-6 h-6 flex items-center justify-center mr-2 text-secondary">
+<i class="ri-error-warning-line"></i>
+</div>
+Troubleshooting Guide
+</h2>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="troubleshooting-container">
+</div>
+</section>
+
+<section id="tutorials" class="mb-12">
+<h2 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
+<div class="w-6 h-6 flex items-center justify-center mr-2 text-blue-500">
+<i class="ri-video-line"></i>
+</div>
+Video Tutorials
+</h2>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="tutorials-container">
+</div>
+</section>
+
+<section id="knowledge-base" class="mb-12">
+<h2 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
+<div class="w-6 h-6 flex items-center justify-center mr-2 text-green-600">
+<i class="ri-book-open-line"></i>
+</div>
+Knowledge Base
+</h2>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="col-span-1 md:col-span-2">
+<div class="bg-white border border-gray-200 rounded p-6">
+<h3 class="text-lg font-semibold text-gray-800 mb-4">Popular Articles</h3>
+<ul class="space-y-4" id="popular-articles-container">
+</ul>
+</div>
+</div>
+
+<div class="col-span-1">
+<div class="bg-white border border-gray-200 rounded p-6 mb-6">
+<h3 class="text-lg font-semibold text-gray-800 mb-4">Categories</h3>
+<ul class="space-y-2">
+<li><a href="#" class="flex items-center text-gray-700 hover:text-primary">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-time-line"></i>
+</div>
+Clock In/Out (12)
+</a></li>
+<li><a href="#" class="flex items-center text-gray-700 hover:text-primary">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-map-pin-line"></i>
+</div>
+Location Tracking (8)
+</a></li>
+<li><a href="#" class="flex items-center text-gray-700 hover:text-primary">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-calendar-line"></i>
+</div>
+Scheduling (10)
+</a></li>
+<li><a href="#" class="flex items-center text-gray-700 hover:text-primary">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-user-line"></i>
+</div>
+Account Management (6)
+</a></li>
+<li><a href="#" class="flex items-center text-gray-700 hover:text-primary">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-settings-line"></i>
+</div>
+System Settings (9)
+</a></li>
+</ul>
+</div>
+
+<div class="bg-white border border-gray-200 rounded p-6">
+<h3 class="text-lg font-semibold text-gray-800 mb-4">Recently Added</h3>
+<ul class="space-y-3" id="recent-articles-container">
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<section id="contact" class="mb-12">
+<h2 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
+<div class="w-6 h-6 flex items-center justify-center mr-2 text-amber-500">
+<i class="ri-customer-service-2-line"></i>
+</div>
+Contact Support
+</h2>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="col-span-1 md:col-span-2">
+<div class="bg-white border border-gray-200 rounded p-6">
+<h3 class="text-lg font-semibold text-gray-800 mb-4">Submit a Support Ticket</h3>
+<form id="support-form">
+<div class="mb-4">
+<label for="issue-category" class="block text-sm font-medium text-gray-700 mb-1">Issue Category</label>
+<div class="relative">
+<select id="issue-category" class="block w-full pl-3 pr-10 py-2 border border-gray-300 rounded-button focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary appearance-none">
+<option value="">Select a category</option>
+<option value="login">Login Issues</option>
+<option value="location">Location Tracking</option>
+<option value="schedule">Schedule Problems</option>
+<option value="clock">Clock In/Out</option>
+<option value="other">Other</option>
+</select>
+<div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+<div class="w-5 h-5 flex items-center justify-center text-gray-400">
+<i class="ri-arrow-down-s-line"></i>
+</div>
+</div>
+</div>
+</div>
+
+<div class="mb-4">
+<label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Subject</label>
+<input type="text" id="subject" class="block w-full px-3 py-2 border border-gray-300 rounded-button focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Brief description of your issue">
+</div>
+
+<div class="mb-4">
+<label for="description" class="block text-sm font-medium text-gray-700 mb-1">Description</label>
+<textarea id="description" rows="5" class="block w-full px-3 py-2 border border-gray-300 rounded-button focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Please provide details about your issue..."></textarea>
+</div>
+
+<div class="mb-4">
+<label class="block text-sm font-medium text-gray-700 mb-1">Priority</label>
+<div class="flex items-center space-x-4">
+<div class="flex items-center">
+<div class="custom-radio" id="priority-low"></div>
+<label for="priority-low" class="ml-2 text-sm text-gray-700 cursor-pointer">Low</label>
+</div>
+<div class="flex items-center">
+<div class="custom-radio" id="priority-medium"></div>
+<label for="priority-medium" class="ml-2 text-sm text-gray-700 cursor-pointer">Medium</label>
+</div>
+<div class="flex items-center">
+<div class="custom-radio" id="priority-high"></div>
+<label for="priority-high" class="ml-2 text-sm text-gray-700 cursor-pointer">High</label>
+</div>
+</div>
+</div>
+
+<div class="mb-6">
+<label for="attachment" class="block text-sm font-medium text-gray-700 mb-1">Attachments (optional)</label>
+<div class="flex items-center justify-center w-full">
+<label for="attachment" class="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100">
+<div class="flex flex-col items-center justify-center pt-5 pb-6">
+<div class="w-10 h-10 flex items-center justify-center mb-1 text-gray-500">
+<i class="ri-upload-2-line ri-xl"></i>
+</div>
+<p class="mb-2 text-sm text-gray-500"><span class="font-semibold">Click to upload</span> or drag and drop</p>
+<p class="text-xs text-gray-500">PNG, JPG, PDF or MP4 (max. 10MB)</p>
+</div>
+<input id="attachment" type="file" class="hidden">
+</label>
+</div>
+</div>
+
+<button type="submit" class="w-full py-2.5 bg-primary text-white font-medium rounded-button hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary !rounded-button whitespace-nowrap">Submit Ticket</button>
+</form>
+</div>
+</div>
+
+<div class="col-span-1">
+<div class="bg-white border border-gray-200 rounded p-6 mb-6">
+<h3 class="text-lg font-semibold text-gray-800 mb-4">Contact Information</h3>
+<div class="space-y-4">
+<div>
+<div class="flex items-center text-gray-800 mb-1">
+<div class="w-5 h-5 flex items-center justify-center mr-2 text-primary">
+<i class="ri-mail-line"></i>
+</div>
+<span class="font-medium">Email Support:</span>
+</div>
+<p class="text-gray-600 pl-7">support@chubbybuns.com</p>
+</div>
+
+<div>
+<div class="flex items-center text-gray-800 mb-1">
+<div class="w-5 h-5 flex items-center justify-center mr-2 text-primary">
+<i class="ri-phone-line"></i>
+</div>
+<span class="font-medium">Phone Support:</span>
+</div>
+<p class="text-gray-600 pl-7">(812) 555-1234</p>
+</div>
+
+<div>
+<div class="flex items-center text-gray-800 mb-1">
+<div class="w-5 h-5 flex items-center justify-center mr-2 text-primary">
+<i class="ri-time-line"></i>
+</div>
+<span class="font-medium">Support Hours:</span>
+</div>
+<p class="text-gray-600 pl-7">Monday - Friday: 8am - 8pm<br>Saturday: 10am - 6pm<br>Sunday: Closed</p>
+</div>
+</div>
+</div>
+
+<div class="bg-white border border-gray-200 rounded p-6">
+<h3 class="text-lg font-semibold text-gray-800 mb-4">Live Chat</h3>
+<p class="text-gray-600 mb-4">Need immediate assistance? Start a live chat with our support team.</p>
+<button class="w-full py-2.5 bg-blue-500 text-white font-medium rounded-button hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 !rounded-button whitespace-nowrap">
+<div class="flex items-center justify-center">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-message-3-line"></i>
+</div>
+Start Live Chat
+</div>
+</button>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+
+<footer class="bg-gray-800 text-white py-6 px-6">
+<div class="container mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-center">
+<div class="mb-4 md:mb-0">
+<div class="text-2xl font-['Pacifico'] mb-2">logo</div>
+<p class="text-gray-400 text-sm">© 2025 Chubby Buns BTown Time Management System. All rights reserved.</p>
+</div>
+<div class="flex flex-col md:flex-row gap-4 md:gap-8">
+<a href="https://readdy.ai/home/5774d525-e570-4acd-9b2d-8b8144fdbd94/8895fdd0-79c8-48b1-baa5-24142108140b" data-readdy="true" class="text-gray-300 hover:text-white transition">Help & Support</a>
+<a href="https://readdy.ai/home/5774d525-e570-4acd-9b2d-8b8144fdbd94/cc1b2272-0088-4bcf-9034-106e72ebb8f3" data-readdy="true" class="text-gray-300 hover:text-white transition">Admin Portal</a>
+<a href="#" class="text-gray-300 hover:text-white transition">Company Policies</a>
+</div>
+</div>
+</div>
+</footer>
+
+<script>
+// Mock data for FAQs
+const faqData = [
+  {
+    question: "How does the automatic clock in/out feature work?",
+    answer: "The automatic clock in/out feature uses your device's GPS location to determine when you're within 100 meters of the restaurant. When you enter this range, you'll be automatically clocked in, and when you leave this range, you'll be automatically clocked out. You must have location services enabled and grant the app permission to access your location for this feature to work."
+  },
+  {
+    question: "What should I do if my location isn't being tracked correctly?",
+    answer: "If your location isn't being tracked correctly, first ensure location services are enabled on your device and that you've granted the app permission to access your location. Try refreshing the app or restarting your device. If issues persist, make sure you're not in a location with poor GPS signal (like inside a building with thick walls). If problems continue, contact technical support."
+  },
+  {
+    question: "How do I request time off or schedule changes?",
+    answer: "To request time off or schedule changes, you need to contact your manager directly. Currently, this system is designed for time tracking only. Your manager will update your schedule in the system, which will then be reflected in your weekly schedule view. Future updates may include self-service schedule request features."
+  },
+  {
+    question: "What happens if I forget to clock out?",
+    answer: "If you forget to clock out manually and don't have automatic clock out enabled, the system will keep you clocked in. Your manager has the ability to adjust your hours in the admin portal. It's important to remember to clock out or enable the automatic feature to ensure accurate time tracking. If you notice you forgot to clock out, contact your manager as soon as possible."
+  },
+  {
+    question: "Can I use the system on multiple devices?",
+    answer: "Yes, you can use the system on multiple devices by logging in with your employee ID and PIN. However, location tracking for automatic clock in/out will only work on the device you're currently using. If you switch devices during your shift, make sure to check your clock in/out status on the new device."
+  }
+];
+
+// Mock data for troubleshooting guides
+const troubleshootingData = [
+  {
+    title: "Location Tracking Issues",
+    icon: "ri-map-pin-line",
+    color: "text-red-500",
+    bgColor: "bg-red-100",
+    steps: [
+      "Check if location services are enabled on your device",
+      "Ensure the app has permission to access your location",
+      "Try refreshing the app or restarting your device",
+      "Move to an area with better GPS signal",
+      "Contact support if issues persist"
+    ]
+  },
+  {
+    title: "Login Problems",
+    icon: "ri-lock-line",
+    color: "text-amber-500",
+    bgColor: "bg-amber-100",
+    steps: [
+      "Verify your employee ID is entered correctly",
+      "Make sure your PIN is correct",
+      "Check if Caps Lock is enabled",
+      "Try clearing your browser cache",
+      "Contact your manager if you forgot your credentials"
+    ]
+  },
+  {
+    title: "Clock In/Out Errors",
+    icon: "ri-time-line",
+    color: "text-blue-500",
+    bgColor: "bg-blue-100",
+    steps: [
+      "Check your internet connection",
+      "Verify your location services are working",
+      "Try manual clock in/out if automatic isn't working",
+      "Refresh the app and try again",
+      "Report persistent issues to technical support"
+    ]
+  },
+  {
+    title: "Schedule Display Issues",
+    icon: "ri-calendar-line",
+    color: "text-green-500",
+    bgColor: "bg-green-100",
+    steps: [
+      "Refresh the page to update schedule data",
+      "Check if you're logged in with the correct account",
+      "Clear your browser cache and cookies",
+      "Try accessing from a different device",
+      "Contact your manager if your schedule is incorrect"
+    ]
+  }
+];
+
+// Mock data for video tutorials
+const tutorialData = [
+  {
+    title: "Getting Started with Time Management System",
+    duration: "3:45",
+    views: "1.2K",
+    date: "Mar 15, 2025"
+  },
+  {
+    title: "How to Use Automatic Clock In/Out",
+    duration: "4:20",
+    views: "987",
+    date: "Mar 18, 2025"
+  },
+  {
+    title: "Managing Breaks and Time Off",
+    duration: "5:15",
+    views: "756",
+    date: "Mar 22, 2025"
+  },
+  {
+    title: "Troubleshooting Location Tracking",
+    duration: "6:30",
+    views: "1.5K",
+    date: "Mar 25, 2025"
+  },
+  {
+    title: "Understanding Your Weekly Schedule",
+    duration: "4:10",
+    views: "632",
+    date: "Mar 28, 2025"
+  },
+  {
+    title: "Tips for Efficient Time Management",
+    duration: "7:25",
+    views: "843",
+    date: "Mar 30, 2025"
+  }
+];
+
+// Mock data for popular articles
+const popularArticlesData = [
+  {
+    title: "Complete Guide to Location-Based Clock In/Out",
+    views: "2.4K",
+    category: "Clock In/Out"
+  },
+  {
+    title: "How to Resolve Common GPS Tracking Issues",
+    views: "1.8K",
+    category: "Location Tracking"
+  },
+  {
+    title: "Understanding Your Weekly Schedule View",
+    views: "1.5K",
+    category: "Scheduling"
+  },
+  {
+    title: "Best Practices for Break Management",
+    views: "1.3K",
+    category: "Clock In/Out"
+  },
+  {
+    title: "Security Tips for Your Time Management Account",
+    views: "1.1K",
+    category: "Account Management"
+  }
+];
+
+// Mock data for recent articles
+const recentArticlesData = [
+  {
+    title: "New Feature: Enhanced Location Accuracy",
+    date: "Mar 30, 2025"
+  },
+  {
+    title: "Mobile App Update Available",
+    date: "Mar 28, 2025"
+  },
+  {
+    title: "Holiday Scheduling Guidelines",
+    date: "Mar 25, 2025"
+  }
+];
+
+// Populate FAQs
+const faqContainer = document.getElementById('faq-container');
+faqData.forEach((faq, index) => {
+  const faqItem = document.createElement('div');
+  faqItem.className = 'faq-item bg-white border border-gray-200 rounded overflow-hidden';
+  faqItem.innerHTML = `
+    <div class="flex justify-between items-center p-4 cursor-pointer">
+      <h3 class="font-medium text-gray-800">${faq.question}</h3>
+      <div class="faq-toggle w-6 h-6 flex items-center justify-center text-gray-500 transition-transform">
+        <i class="ri-arrow-down-s-line"></i>
+      </div>
+    </div>
+    <div class="faq-answer px-4 pb-4">
+      <p class="text-gray-600">${faq.answer}</p>
+    </div>
+  `;
+  faqContainer.appendChild(faqItem);
+});
+
+// Populate troubleshooting guides
+const troubleshootingContainer = document.getElementById('troubleshooting-container');
+troubleshootingData.forEach(guide => {
+  const guideItem = document.createElement('div');
+  guideItem.className = 'bg-white border border-gray-200 rounded p-6';
+  
+  let stepsHTML = '';
+  guide.steps.forEach((step, index) => {
+    stepsHTML += `
+      <li class="flex items-start mb-2">
+        <span class="inline-flex items-center justify-center w-6 h-6 ${guide.bgColor} ${guide.color} rounded-full text-xs font-medium mr-2 mt-0.5">${index + 1}</span>
+        <span class="text-gray-600">${step}</span>
+      </li>
+    `;
+  });
+  
+  guideItem.innerHTML = `
+    <div class="flex items-center mb-4">
+      <div class="w-10 h-10 flex items-center justify-center ${guide.bgColor} ${guide.color} rounded-full mr-3">
+        <i class="${guide.icon} ri-lg"></i>
+      </div>
+      <h3 class="text-lg font-semibold text-gray-800">${guide.title}</h3>
+    </div>
+    <ul class="space-y-1">
+      ${stepsHTML}
+    </ul>
+  `;
+  troubleshootingContainer.appendChild(guideItem);
+});
+
+// Populate video tutorials
+const tutorialsContainer = document.getElementById('tutorials-container');
+tutorialData.forEach(tutorial => {
+  const tutorialItem = document.createElement('div');
+  tutorialItem.className = 'bg-white border border-gray-200 rounded overflow-hidden';
+  tutorialItem.innerHTML = `
+    <div class="video-thumbnail h-48 bg-gray-200 relative">
+      <!-- This would be a real video thumbnail in production -->
+    </div>
+    <div class="p-4">
+      <h3 class="font-medium text-gray-800 mb-2">${tutorial.title}</h3>
+      <div class="flex items-center text-sm text-gray-500">
+        <div class="flex items-center mr-4">
+          <div class="w-4 h-4 flex items-center justify-center mr-1">
+            <i class="ri-time-line"></i>
+          </div>
+          ${tutorial.duration}
+        </div>
+        <div class="flex items-center mr-4">
+          <div class="w-4 h-4 flex items-center justify-center mr-1">
+            <i class="ri-eye-line"></i>
+          </div>
+          ${tutorial.views} views
+        </div>
+        <div class="flex items-center">
+          <div class="w-4 h-4 flex items-center justify-center mr-1">
+            <i class="ri-calendar-line"></i>
+          </div>
+          ${tutorial.date}
+        </div>
+      </div>
+    </div>
+  `;
+  tutorialsContainer.appendChild(tutorialItem);
+});
+
+// Populate popular articles
+const popularArticlesContainer = document.getElementById('popular-articles-container');
+popularArticlesData.forEach(article => {
+  const articleItem = document.createElement('li');
+  articleItem.className = 'border-b border-gray-100 pb-3';
+  articleItem.innerHTML = `
+    <a href="#" class="block hover:bg-gray-50 p-2 -mx-2 rounded">
+      <h4 class="font-medium text-gray-800 mb-1">${article.title}</h4>
+      <div class="flex items-center text-sm">
+        <span class="text-primary px-2 py-0.5 bg-primary/10 rounded-full text-xs mr-2">${article.category}</span>
+        <div class="flex items-center text-gray-500">
+          <div class="w-4 h-4 flex items-center justify-center mr-1">
+            <i class="ri-eye-line"></i>
+          </div>
+          ${article.views} views
+        </div>
+      </div>
+    </a>
+  `;
+  popularArticlesContainer.appendChild(articleItem);
+});
+
+// Populate recent articles
+const recentArticlesContainer = document.getElementById('recent-articles-container');
+recentArticlesData.forEach(article => {
+  const articleItem = document.createElement('li');
+  articleItem.innerHTML = `
+    <a href="#" class="block hover:text-primary">
+      <div class="font-medium text-gray-800">${article.title}</div>
+      <div class="text-sm text-gray-500">${article.date}</div>
+    </a>
+  `;
+  recentArticlesContainer.appendChild(articleItem);
+});
+
+// Update current time
+function updateTime() {
+  const now = new Date();
+  const dateString = now.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+  const timeString = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+  document.getElementById('current-date').textContent = dateString;
+  document.getElementById('current-time').textContent = timeString;
+  setTimeout(updateTime, 1000);
+}
+updateTime();
+
+// FAQ toggle functionality
+document.querySelectorAll('.faq-item').forEach(item => {
+  const header = item.querySelector('.flex.justify-between');
+  header.addEventListener('click', () => {
+    item.classList.toggle('active');
+  });
+});
+
+// Custom radio button functionality
+const radioButtons = document.querySelectorAll('.custom-radio');
+radioButtons.forEach(radio => {
+  radio.addEventListener('click', function() {
+    radioButtons.forEach(r => r.classList.remove('checked'));
+    this.classList.add('checked');
+  });
+});
+
+// Support form submission
+document.getElementById('support-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  // In a real application, this would send the form data to a server
+  const notification = document.createElement('div');
+  notification.className = 'fixed top-4 right-4 bg-white shadow-lg rounded-lg p-4 flex items-center';
+  notification.innerHTML = `
+    <div class="w-6 h-6 flex items-center justify-center mr-2 text-primary">
+      <i class="ri-checkbox-circle-line"></i>
+    </div>
+    <p class="text-gray-800">Your support ticket has been submitted successfully!</p>
+  `;
+  document.body.appendChild(notification);
+  
+  // Clear form
+  this.reset();
+  document.querySelectorAll('.custom-radio').forEach(r => r.classList.remove('checked'));
+  
+  // Remove notification after 3 seconds
+  setTimeout(() => {
+    notification.remove();
+  }, 3000);
+});
+</script>
+</body>
+</html>
